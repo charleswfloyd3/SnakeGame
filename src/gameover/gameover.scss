@@ -1,0 +1,136 @@
+.game_over {
+	position: relative;
+	width: 80vw;
+	height: 80vh;
+	background-color: black;
+	border: 7.5px solid white;
+	margin: 50px auto;
+}
+.playagainorquit {
+	font-family: cursive;
+	color: lime;
+	font-size: 2.5vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: 0%;
+	// @include anim(example, 1s, infinite);
+	margin-top: 0%;
+}
+@mixin anim($name, $dur, $iterate) {
+	animation-name: $name;
+	animation-duration: $dur;
+	animation-iteration-count: $iterate;
+}
+
+.game_overtitle {
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+	font-size: 9vw;
+	margin-top: 10%;
+
+	text-align: center;
+	@include anim(example, 1s, infinite);
+}
+
+@keyframes example {
+	0% {
+		color: lime;
+		text-shadow: 0 0 20px green;
+	}
+	25% {
+		color: green;
+		text-shadow: 2px 2px 2px lime;
+		transform: translate(-2px, 1px);
+	}
+	40% {
+		color: lime;
+		text-shadow: none;
+		transform: translate(0, 0);
+	}
+	50% {
+		color: green;
+		text-shadow: 5px 5px 2px blue, -5px -5px 2px red;
+		transform: translate(0px, 5px);
+	}
+	70% {
+		color: lime;
+		text-shadow: none;
+		transform: translate(0, 0);
+	}
+	80% {
+		color: lime;
+		text-shadow: 0 0 20px green;
+		transform: translate(-2px, 1px);
+	}
+	100% {
+		color: lime;
+		text-shadow: none;
+	}
+}
+
+.snakeImage {
+	height: 100px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+	margin-bottom: -170px;
+	margin-top: 100px;
+}
+.scoreFinal {
+	color: white;
+	text-align: center;
+	font-family: cursive;
+	font-size: 2vw;
+	margin-top: -9%;
+}
+.scoreFinal2 {
+	color: white;
+	text-align: center;
+	font-family: cursive;
+	font-size: 2vw;
+	margin-top: 2%;
+}
+.newRecord {
+	color: white;
+	text-align: center;
+	font-family: cursive;
+	font-size: 2vw;
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 5%;
+	margin-top: -8%;
+}
+.game_overContent {
+	margin-top: 100px;
+}
+@media (max-width: 1200px) {
+	.game_overContent {
+		margin-top: 120px;
+	}
+}
+@media (max-width: 1100px) {
+	.game_overContent {
+		margin-top: 130px;
+	}
+}
+@media (max-width: 1000px) {
+	.game_overContent {
+		margin-top: 140px;
+	}
+}
+@media (max-width: 900px) {
+	.game_overContent {
+		margin-top: 200px;
+	}
+	.newRecord {
+		font-size: 3vw;
+	}
+	.scoreFinal {
+		font-size: 3vw;
+	}
+	.scoreFinal2 {
+		font-size: 3vw;
+	}
+}
