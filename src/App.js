@@ -38,6 +38,10 @@ function App(props) {
     });
     return contains;
   }
+
+  const checkIfCollapsed = () =>{
+
+  }
 	useInterval(
 		(props)=>{
     if(start){
@@ -50,8 +54,9 @@ function App(props) {
     ,speed)
     useInterval(() =>{
       		for(let i = 0; i < snakeCoordinates.length - 1; i++){
-		if(snakeCoordinates[i][0] >= 90.1 || snakeCoordinates[i][0] < -.1 || snakeCoordinates[i][1] >= 90.1 || snakeCoordinates[i][1] < -.1 || countOccurrences(snakeCoordinates, snakeCoordinates[i]) == 2 ) {
+		if(snakeCoordinates[i][0] >= 90.1 || snakeCoordinates[i][0] < -.1 || snakeCoordinates[i][1] >= 90.1 || snakeCoordinates[i][1] < -.1 || countOccurrences(snakeCoordinates, snakeCoordinates[i]) == 2) {
       setgameStatus(false)
+      
       if(score <= websiteRecord){
 
 
@@ -61,12 +66,10 @@ function App(props) {
         setwebsiteRecord(score)
       }
     }
-    if(props.keyCode == "81"){
-      setgameStatus(true)
 
-    }
 
 	}
+
     }, 1)
   const EatFoodSound = () =>{
         useSound(
@@ -109,9 +112,18 @@ function App(props) {
 
 			}
 		}
-	}		
+	}
+  // const snakeCollapse = () =>{
+  //         snakeCoordinates.pop()
+  //     snakeCoordinates.forEach(dot => {
+  //       if(head[0] == dot[0] && head[1] == dot[1]){
+  //         // setgameStatus(false)
+  //       }
+  //     });
+  // }		
 	useEffect(()=>{
 				moveSnake()
+        checkIfCollapsed()
 				eatFood()
 
 	},[counter])
@@ -140,20 +152,16 @@ function App(props) {
 
   const checkKey = (e) => {
     e = e || window.event;
-    if (e.keyCode == '38') {
-        console.log("up")
+    if (e.keyCode == '38' && direction != "down") {
         setDirection("up")
     }
-    else if (e.keyCode == '40') {
-        console.log("down")
+    else if (e.keyCode == '40' && direction != "up") {
         setDirection("down")
     }
-    else if (e.keyCode == '37') {
-        console.log("left")
+    else if (e.keyCode == '37' && direction != "right") {
         setDirection("left")
     }
-    else if (e.keyCode == '39') {
-        console.log("right")
+    else if (e.keyCode == '39' && direction != "left") {
         setDirection("right")
     }
     else if(e.keyCode == "82"){
@@ -163,8 +171,12 @@ function App(props) {
       setbrokeRecord(false)
       setgameStatus(true)
     }
-    else if(e.keyCode == "81"){
-
+        else if(e.keyCode == "81"){
+      setDirection("down")
+      setsnakeCoordinates([[50,0], [50,5], [50,10]])
+      setScore(0)
+      setbrokeRecord(false)
+      setgameStatus(true)
       setStart(false)
     }
   }
@@ -181,6 +193,9 @@ function App(props) {
           snakeCoordinatesLive.push(head)
           snakeCoordinatesLive.shift()
           setsnakeCoordinates(snakeCoordinatesLive)
+
+
+          
       }
       else if (direction == "down") {   
           head = [head[0], head[1] + 5]
@@ -199,7 +214,8 @@ function App(props) {
           snakeCoordinatesLive.push(head)
           snakeCoordinatesLive.shift()
           setsnakeCoordinates(snakeCoordinatesLive)
-      }        
+      }
+
   }
   const slugGamemode = () =>{
     setgameStatus(true)
@@ -211,6 +227,7 @@ function App(props) {
 
   }
     const wormGamemode = () =>{
+      setgameStatus(false)
     setSpeed(125)
     setStart(true)
     setGamemode("Worm")
@@ -219,10 +236,10 @@ function App(props) {
     const pythonGamemode = () =>{
     setSpeed(75)
     setStart(true)
+    setgameStatus(true)
     setGamemode("Python")
 
   }
-  console.log(gameStatus)
   return (
     <div className="wholepage1">
       {start ? <div className="whole_page2">
