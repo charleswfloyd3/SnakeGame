@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './gameover.scss'
+import './gameover.css'
 function GameOver(props) {
 
   return (
