@@ -15,14 +15,14 @@
 	justify-content: center;
 	text-align: center;
 	margin-top: 0%;
-	// @include anim(example, 1s, infinite);
+	/* // @include anim(example, 1s, infinite); */
 	margin-top: 0%;
 }
-@mixin anim($name, $dur, $iterate) {
+/* @mixin anim($name, $dur, $iterate) {
 	animation-name: $name;
 	animation-duration: $dur;
 	animation-iteration-count: $iterate;
-}
+} */
 
 .game_overtitle {
 	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
