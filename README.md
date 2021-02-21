@@ -1,2 +1,1 @@
-# Snake
-# snake_try2
+# Snake game built using React Js. 
