@@ -6,6 +6,11 @@
 	border: 7.5px solid white;
 	margin: 50px auto;
 }
+@mixin anim($name, $dur, $iterate) {
+	animation-name: $name;
+	animation-duration: $dur;
+	animation-iteration-count: $iterate;
+}
 .playagainorquit {
 	font-family: cursive;
 	color: lime;
@@ -17,11 +22,6 @@
 	margin-top: 0%;
 	@include anim(example, 1s, infinite);
 	margin-top: 0%;
-}
-@mixin anim($name, $dur, $iterate) {
-	animation-name: $name;
-	animation-duration: $dur;
-	animation-iteration-count: $iterate;
 }
 
 .game_overtitle {
